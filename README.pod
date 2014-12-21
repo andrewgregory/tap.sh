@@ -1,0 +1,153 @@
+=head1 NAME
+
+tap.sh - lightweight TAP output generator for bash test suites
+
+=head1 SYNOPSIS
+
+tap.sh is intended to make writing TAP-based tests in bash as easy as possible.
+It consists of a single file that can be included directly in test programs.
+The resulting test programs can be used with test harnesses such as
+L<AutoMake|https://www.gnu.org/software/automake/manual/html_node/Using-the-TAP-test-protocol.html>
+and L<prove>.
+
+=head1 DESCRIPTION
+
+=head2 Test Control
+
+=over
+
+=item tap_plan count
+
+Generate TAP plan.  If the number of tests is unknown, use C<tap_done_testing>
+instead.
+
+=item tap_skip_all [format [arguments]]
+
+Skip all tests.
+
+ if [[ $RUN_DEVELOPER_TESTS -eq 1 ]]; then
+     run_developer_tests
+ else
+     tap_skip_all "run with RUN_DEVELOPER_TESTS=1 for developer tests"
+ fi
+
+=item tap_done_testing
+
+Indicate the end of testing for tests without a plan.  If the number of tests
+is known, use C<tap_plan> instead.
+
+=item tap_finish
+
+Returns C<0> if all tests were run successfully, C<1> otherwise.  Additionally,
+a diagnostic message will be printed if the number of tests run does match the
+number of tests planned.  Provided as a convenience for test programs that
+should return non-zero on failure.
+
+=item $tap_todo
+
+Indicate that the following tests are expected to fail.  Set to C<''> to
+disable.
+
+ tap_todo="make 1 equal 2"
+ tap_is_int 1 2 "1 == 2" # counted as success
+ tap_todo=''
+ tap_is_int 1 2 "1 == 2" # counted as failure
+
+=item void tap_skip count [format [arguments]]
+
+Skip tests.
+
+ if [[ $BAZ -eq 1 ]]; then
+     tap_ok foo
+     tap_ok bar
+ else
+     tap_skip 2 "foo and bar require BAZ"
+ fi
+
+=item tap_bail [format [arguments]]
+
+Indicate an unrecoverable error.  It is up to the caller to actually exit the
+test.
+
+=item tap_diag format [arguments]
+
+Print a diagnostic message.  Harnesses should suppress the message for tests
+marked with C<tap_todo>.
+
+=item tap_note format [arguments]
+
+Like C<tap_diag> except harnesses should hide the message unless run in verbose
+mode.  Useful for debugging the test itself.
+
+=back
+
+=head2 Test Functions
+
+=over
+
+=item tap_ok success [format [arguments]]
+
+Check test success.
+
+=item tap_is_str got expected [format [arguments]]
+
+Compare two strings with helpful diagnostic output.
+
+=item tap_is_int got expected [format [arguments]]
+
+Compare two integers with helpful diagnostic output.
+
+=item tap_diff got expected [format [arguments]]
+
+Check if two files are identical with helpful diagnostic output.
+
+=item tap_diff_str got expected [format [arguments]]
+
+Similar to C<tap_is_str> except C<diff> is used for the diagnostic output.
+Useful for comparing multi-line strings.
+
+=back
+
+=head1 EXAMPLES
+
+=head2 Basic Usage
+
+ #!/bin/bash
+
+ source tap.sh
+
+ tap_plan 2
+ ...
+ tap_is_int $? 0 "foo return value"
+ tap_is_str "foo" "bar"
+
+ tap_finish
+ exit $?
+
+=head1 COPYRIGHT AND LICENSE
+
+Copyright 2014 Andrew Gregory <andrew.gregory.8@gmail.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+=head1 SEE ALSO
+
+L<http://podwiki.hexten.net/TAP/TAP.html>, L<prove>, L<Test::More>
+
+Project URL: L<http://github.com/andrewgregory/tap.sh>

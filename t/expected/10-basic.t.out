@@ -1,0 +1,110 @@
+1..0
+1..1
+1..2
+1..0 # SKIP
+1..0 # SKIP foo bar
+ok 1 # SKIP foo bar
+ok 2 # SKIP
+ok 3 # SKIP
+# foo
+# foo bar
+Bail out!
+Bail out! foo bar
+not ok 4
+#   Failed test at 10-basic.t line 24.
+ok 5
+not ok 6 - foo
+#   Failed test at 10-basic.t line 26.
+ok 7 - foo
+ok 8
+not ok 9
+#   Failed test at 10-basic.t line 30.
+#          got: 'foo'
+#     expected: 'bar'
+ok 10 - foo bar
+not ok 11 - foo bar
+#   Failed test at 10-basic.t line 32.
+#          got: 'foo'
+#     expected: 'bar'
+ok 12
+not ok 13
+#   Failed test at 10-basic.t line 34.
+#          got: ''
+#     expected: 'bar'
+ok 14
+not ok 15
+#   Failed test at 10-basic.t line 37.
+#          got: '1'
+#     expected: '0'
+ok 16 - foo bar
+not ok 17 - foo bar
+#   Failed test at 10-basic.t line 39.
+#          got: '1'
+#     expected: '0'
+ok 18 - tap_diff_str
+not ok 19 - tap_diff_str
+#   Failed test at 10-basic.t line 42.
+# --- got
+# +++ expected
+# @@ -1,3 +1,3 @@
+# -1
+# -2
+#  3
+# +2
+# +1
+1..19
+1..0
+1..1
+1..2
+1..0 # SKIP
+1..0 # SKIP foo bar
+ok 20 # SKIP foo bar
+ok 21 # SKIP
+ok 22 # SKIP
+# foo
+# foo bar
+Bail out!
+Bail out! foo bar
+not ok 23 # TODO FOO TODO
+#   Failed (TODO) test at 10-basic.t line 24.
+ok 24 # TODO FOO TODO
+not ok 25 - foo # TODO FOO TODO
+#   Failed (TODO) test at 10-basic.t line 26.
+ok 26 - foo # TODO FOO TODO
+ok 27 # TODO FOO TODO
+not ok 28 # TODO FOO TODO
+#   Failed (TODO) test at 10-basic.t line 30.
+#          got: 'foo'
+#     expected: 'bar'
+ok 29 - foo bar # TODO FOO TODO
+not ok 30 - foo bar # TODO FOO TODO
+#   Failed (TODO) test at 10-basic.t line 32.
+#          got: 'foo'
+#     expected: 'bar'
+ok 31 # TODO FOO TODO
+not ok 32 # TODO FOO TODO
+#   Failed (TODO) test at 10-basic.t line 34.
+#          got: ''
+#     expected: 'bar'
+ok 33 # TODO FOO TODO
+not ok 34 # TODO FOO TODO
+#   Failed (TODO) test at 10-basic.t line 37.
+#          got: '1'
+#     expected: '0'
+ok 35 - foo bar # TODO FOO TODO
+not ok 36 - foo bar # TODO FOO TODO
+#   Failed (TODO) test at 10-basic.t line 39.
+#          got: '1'
+#     expected: '0'
+ok 37 - tap_diff_str # TODO FOO TODO
+not ok 38 - tap_diff_str # TODO FOO TODO
+#   Failed (TODO) test at 10-basic.t line 42.
+# --- got
+# +++ expected
+# @@ -1,3 +1,3 @@
+# -1
+# -2
+#  3
+# +2
+# +1
+1..38
