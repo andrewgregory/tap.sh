@@ -50,7 +50,7 @@ run() {
     runtest
 }
 
-output="$(diff -u --label got --label expected <(run) "$dir/expected/10-basic.t.out")"
+output="$(diff -u --label got --label expected <(run 2>&1) "$dir/expected/10-basic.t.out")"
 ret=$?
 
 printf "1..1\n"
