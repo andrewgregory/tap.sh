@@ -108,13 +108,30 @@ Useful for comparing multi-line strings.
 
 =back
 
+=head2 Custom Test Functions
+
+Functions beginning with C<tap_*> will be excluded from the caller information
+printed on test failures.
+
+ #!/bin/bash
+ source tap.sh || exit 1
+ tap_mytest() {
+    tap_is_int 1 2
+ }
+ tap_mytest
+
+ not ok 1
+ #   Failed test at tmp.sh line 6.
+ #          got: '1'
+ #     expected: '2'
+
 =head1 EXAMPLES
 
 =head2 Basic Usage
 
  #!/bin/bash
 
- source tap.sh
+ source tap.sh || exit 1
 
  tap_plan 2
  ...
