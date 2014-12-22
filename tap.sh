@@ -44,6 +44,12 @@ tap_diag() {
     printf "\n"
 }
 
+tap_note() {
+    printf "# "
+    printf -- "$@"
+    printf "\n"
+}
+
 tap_bail() {
     printf "Bail out!"
     _tap_print_reason " " "$@"
