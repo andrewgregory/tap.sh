@@ -59,7 +59,14 @@ tap_bail() {
 }
 
 tap_finish() {
-    (( tap_planned != tap_run )) && tap_diag "Looks like you planned %d tests but ran %d." $tap_planned $tap_run
+    local tap_todo=''
+    if (( tap_planned != tap_run )); then
+        tap_note "Looks like you planned %d tests but ran %d." "$tap_planned" "$tap_run"
+    elif (( tap_planned == tap_run && tap_failed == 0 )); then
+        tap_note "All %d tests successfully run." "$tap_planned"
+    else
+        tap_note "Failed %d of %d tests." "$tap_failed" "$tap_planned"
+    fi
     (( tap_planned == tap_run && tap_failed == 0 ))
 }
 
