@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
-source "$(dirname "$0")"/../tap.sh || exit 1
+dir="$(dirname "$0")"
+source "$dir/../tap.sh" || exit 1
 
 runtest() {
     tap_plan 0
