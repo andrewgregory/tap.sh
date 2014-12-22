@@ -107,10 +107,10 @@ tap_ok() {
         local line func file
         local -i i=0
 
-        read line func file <<<"$(caller $i)"
+        read line func file < <(caller $i)
         while [[ -n $func && $func == tap_* ]]; do
             (( i++ ))
-            read line func file <<<"$(caller $i)"
+            read line func file < <(caller $i)
         done
 
         if [[ -n $file ]]; then
