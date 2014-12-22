@@ -101,11 +101,6 @@ Compare two integers with helpful diagnostic output.
 
 Check if two files are identical with helpful diagnostic output.
 
-=item tap_diff_str got expected [format [arguments]]
-
-Similar to C<tap_is_str> except C<diff> is used for the diagnostic output.
-Useful for comparing multi-line strings.
-
 =back
 
 =head2 Custom Test Functions

@@ -38,8 +38,8 @@ runtest() {
     tap_is_int 1 1 "foo %s" "bar"
     tap_is_int 1 0 "foo %s" "bar"
 
-    tap_diff_str "$(printf "1\n2\n3\n")" "$(printf "1\n2\n3\n")" "tap_diff_str"
-    tap_diff_str "$(printf "1\n2\n3\n")" "$(printf "3\n2\n1\n")" "tap_diff_str"
+    tap_diff <(printf "1\n2\n3\n") <(printf "1\n2\n3\n") "tap_diff"
+    tap_diff <(printf "1\n2\n3\n") <(printf "3\n2\n1\n") "tap_diff"
 
     tap_done_testing
 }

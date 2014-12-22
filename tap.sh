@@ -160,17 +160,4 @@ tap_diff() {
     return $ret
 }
 
-tap_diff_str() {
-    local got="$1" expected="$2"; shift 2
-    local output ret
-    output="$(diff -u --label got --label expected <(echo "$got") <(echo "$expected") 2>&1)"
-    ret=$?
-    if ! tap_ok $ret "$@"; then
-        while IFS= read line; do
-            tap_diag "$line"
-        done <<<"$output"
-    fi
-    return $ret
-}
-
 # vim: ft=sh
