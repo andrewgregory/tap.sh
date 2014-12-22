@@ -39,9 +39,11 @@ tap_skip_all() {
 }
 
 tap_diag() {
-    printf "# "
-    printf -- "$@"
-    printf "\n"
+    if [[ -n $tap_todo ]]; then
+        tap_note "$@"
+    else
+        tap_note "$@" 1>&2
+    fi
 }
 
 tap_note() {
