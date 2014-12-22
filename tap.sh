@@ -104,21 +104,16 @@ tap_ok() {
     fi
     printf "\n"
     if [[ $ok -ne 0 ]]; then
-        # TODO: there must be a less horrible way to do this
-        local call ret line func file
+        local line func file
         local -i i=0
 
-        call=$(caller $i)
-        ret=$?
-        read line func file <<<"$call"
-        while [[ $ret -eq 0 && $func == tap_* ]]; do
+        read line func file <<<"$(caller $i)"
+        while [[ -n $func && $func == tap_* ]]; do
             (( i++ ))
-            call=$(caller $i)
-            ret=$?
-            read line func file <<<"$call"
+            read line func file <<<"$(caller $i)"
         done
 
-        if [[ $ret -eq 0 ]]; then
+        if [[ -n $file ]]; then
             file=${file##*/}
             if [[ -n $tap_todo ]]; then
                 tap_diag "  Failed (TODO) test at %s line %d." "${file}" "$line"
