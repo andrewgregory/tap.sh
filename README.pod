@@ -38,10 +38,10 @@ is known, use C<tap_plan> instead.
 
 =item tap_finish
 
-Returns C<0> if all tests were run successfully, C<1> otherwise.  Additionally,
-a diagnostic message will be printed if the number of tests run does match the
-number of tests planned.  Provided as a convenience for test programs that
-should return non-zero on failure.
+Prints a note summarizing the test results.  Returns C<1> if there were any
+failures or the number of tests run does not match the number planned; returns
+C<0> otherwise.  Provided as a convenience for tests that may be run outside
+a TAP harness and/or need to indicate success or failure by exit value.
 
 =item $tap_todo
 
@@ -139,7 +139,6 @@ printed on test failures.
  tap_is_str "foo" "bar"
 
  tap_finish
- exit $?
 
 =head1 COPYRIGHT AND LICENSE
 
