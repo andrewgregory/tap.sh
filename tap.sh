@@ -140,7 +140,7 @@ tap_is_int() {
 tap_diff() {
     local got="$1" expected="$2"; shift 2
     local output ret
-    output="$(diff -u --label got --label expected "$got" "$expected")"
+    output="$(diff -u --label got --label expected "$got" "$expected" 2>&1)"
     ret=$?
     if ! tap_ok $ret "$@"; then
         while IFS= read line; do
@@ -153,7 +153,7 @@ tap_diff() {
 tap_diff_str() {
     local got="$1" expected="$2"; shift 2
     local output ret
-    output="$(diff -u --label got --label expected <(echo "$got") <(echo "$expected"))"
+    output="$(diff -u --label got --label expected <(echo "$got") <(echo "$expected") 2>&1)"
     ret=$?
     if ! tap_ok $ret "$@"; then
         while IFS= read line; do
