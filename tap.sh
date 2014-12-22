@@ -104,7 +104,7 @@ tap_ok() {
         call=$(caller $i)
         ret=$?
         read line func file <<<"$call"
-        while [[ $ret -eq 0 && ${file##*/} == 'tap.sh' ]]; do
+        while [[ $ret -eq 0 && $func == tap_* ]]; do
             (( i++ ))
             call=$(caller $i)
             ret=$?
