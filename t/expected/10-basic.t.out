@@ -52,52 +52,69 @@ not ok 19 - tap_diff
 #  3
 # +2
 # +1
-1..19
+ok 20
+ok 21
+not ok 22
+#   Failed test at 10-basic.t line 46.
+#          got: 'foobar'
+#     expected: /^\<(foo|bar)\>$/
+ok 23 - foo bar
+ok 24 - foo bar
+not ok 25 - foo bar
+#   Failed test at 10-basic.t line 49.
+#          got: 'foobar'
+#     expected: /^\<(foo|bar)\>$/
+ok 26
+not ok 27
+#   Failed test at 10-basic.t line 51.
+#          got: ''
+#     expected: /^\<(foo|bar)\>/
+1..27
 1..0
 1..1
 1..2
 1..0 # SKIP
 1..0 # SKIP foo bar
-ok 20 # SKIP foo bar
-ok 21 # SKIP
-ok 22 # SKIP
+ok 28 # SKIP foo bar
+ok 29 # SKIP
+ok 30 # SKIP
 # foo
 # foo bar
 Bail out!
 Bail out! foo bar
-not ok 23 # TODO FOO TODO
+not ok 31 # TODO FOO TODO
 #   Failed (TODO) test at 10-basic.t line 24.
-ok 24 # TODO FOO TODO
-not ok 25 - foo # TODO FOO TODO
+ok 32 # TODO FOO TODO
+not ok 33 - foo # TODO FOO TODO
 #   Failed (TODO) test at 10-basic.t line 26.
-ok 26 - foo # TODO FOO TODO
-ok 27 # TODO FOO TODO
-not ok 28 # TODO FOO TODO
+ok 34 - foo # TODO FOO TODO
+ok 35 # TODO FOO TODO
+not ok 36 # TODO FOO TODO
 #   Failed (TODO) test at 10-basic.t line 30.
 #          got: 'foo'
 #     expected: 'bar'
-ok 29 - foo bar # TODO FOO TODO
-not ok 30 - foo bar # TODO FOO TODO
+ok 37 - foo bar # TODO FOO TODO
+not ok 38 - foo bar # TODO FOO TODO
 #   Failed (TODO) test at 10-basic.t line 32.
 #          got: 'foo'
 #     expected: 'bar'
-ok 31 # TODO FOO TODO
-not ok 32 # TODO FOO TODO
+ok 39 # TODO FOO TODO
+not ok 40 # TODO FOO TODO
 #   Failed (TODO) test at 10-basic.t line 34.
 #          got: ''
 #     expected: 'bar'
-ok 33 # TODO FOO TODO
-not ok 34 # TODO FOO TODO
+ok 41 # TODO FOO TODO
+not ok 42 # TODO FOO TODO
 #   Failed (TODO) test at 10-basic.t line 37.
 #          got: '1'
 #     expected: '0'
-ok 35 - foo bar # TODO FOO TODO
-not ok 36 - foo bar # TODO FOO TODO
+ok 43 - foo bar # TODO FOO TODO
+not ok 44 - foo bar # TODO FOO TODO
 #   Failed (TODO) test at 10-basic.t line 39.
 #          got: '1'
 #     expected: '0'
-ok 37 - tap_diff # TODO FOO TODO
-not ok 38 - tap_diff # TODO FOO TODO
+ok 45 - tap_diff # TODO FOO TODO
+not ok 46 - tap_diff # TODO FOO TODO
 #   Failed (TODO) test at 10-basic.t line 42.
 # --- got
 # +++ expected
@@ -107,4 +124,21 @@ not ok 38 - tap_diff # TODO FOO TODO
 #  3
 # +2
 # +1
-1..38
+ok 47 # TODO FOO TODO
+ok 48 # TODO FOO TODO
+not ok 49 # TODO FOO TODO
+#   Failed (TODO) test at 10-basic.t line 46.
+#          got: 'foobar'
+#     expected: /^\<(foo|bar)\>$/
+ok 50 - foo bar # TODO FOO TODO
+ok 51 - foo bar # TODO FOO TODO
+not ok 52 - foo bar # TODO FOO TODO
+#   Failed (TODO) test at 10-basic.t line 49.
+#          got: 'foobar'
+#     expected: /^\<(foo|bar)\>$/
+ok 53 # TODO FOO TODO
+not ok 54 # TODO FOO TODO
+#   Failed (TODO) test at 10-basic.t line 51.
+#          got: ''
+#     expected: /^\<(foo|bar)\>/
+1..54
