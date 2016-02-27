@@ -160,4 +160,15 @@ tap_diff() {
     return $ret
 }
 
+tap_like() {
+    local got="$1" regex="$2"; shift 2
+    [[ $got =~ $regex ]]
+    local ret=$?
+    if ! tap_ok $ret "$@"; then
+        tap_diag "         got: '%s'" "$got"
+        tap_diag "    expected: /%s/" "$regex"
+    fi
+    return $ret
+}
+
 # vim: ft=sh

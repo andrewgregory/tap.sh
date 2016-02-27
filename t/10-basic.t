@@ -41,6 +41,15 @@ runtest() {
     tap_diff <(printf "1\n2\n3\n") <(printf "1\n2\n3\n") "tap_diff"
     tap_diff <(printf "1\n2\n3\n") <(printf "3\n2\n1\n") "tap_diff"
 
+    tap_like "foo"    "^\<(foo|bar)\>$"
+    tap_like "bar"    "^\<(foo|bar)\>$"
+    tap_like "foobar" "^\<(foo|bar)\>$"
+    tap_like "foo"    "^\<(foo|bar)\>$" "foo %s" "bar"
+    tap_like "bar"    "^\<(foo|bar)\>$" "foo %s" "bar"
+    tap_like "foobar" "^\<(foo|bar)\>$" "foo %s" "bar"
+    tap_like "" ""
+    tap_like "" "^\<(foo|bar)\>"
+
     tap_done_testing
 }
 

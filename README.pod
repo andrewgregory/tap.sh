@@ -101,6 +101,10 @@ Compare two integers with helpful diagnostic output.
 
 Check if two files are identical with helpful diagnostic output.
 
+=item tap_like got regex [format [arguments]]
+
+Check if a string matches a regular expression with helpful diagnostic output.
+
 =back
 
 =head2 Custom Test Functions
